@@ -58,7 +58,10 @@ class Eleve extends Stat
         return $this->_stat_id;
     }
 }
-// la classe eleveMannager est particuliere parce que elle a un systeme de verication des method avec test en faite si je le desire je peux tester toutes les methode avec des parametre aléatoire si je fait par exemple $eleveMG = new EleveManager(true) le test sera activer et je pourrait verifier de 1 si la methode ne me renvoit pas une erreur donc la si c'est le cas exeception -> appel de la method sqlerrors et de 2 verifie si le retour du sql n'est pas vide si c'est vide l'exeception est levé et les classe ne sont pas visible a la fin. chaque method revoie une requete sql precise qui permet d'afficher des demande.
+// la classe eleveMannager est particuliere parce que elle a un systeme de verication des method avec test en faite si je le desire je peux tester toutes les methode avec des parametre aléatoire si je fait par exemple 
+// $eleveMG = new EleveManager(true) le test sera activer et je pourrait verifier :
+// 1° si la methode ne me renvoit pas une erreur donc si c'est le cas exeception -> appel de la method sqlerrors. (vous pouver tester en modifiant la requete sql ).
+// 2° verifie si le retour du sql n'est pas vide si c'est vide l'exeception est levé et les classe ne sont pas visible a la fin. chaque method revoie une requete sql precise qui permet d'afficher des demandes spécifique.
 
 
 class EleveManager extends SqlErrors
@@ -88,7 +91,8 @@ class EleveManager extends SqlErrors
 
     public function getEleve_desc($id)
     {
-        $sql = 'SELECT E.eleve_nom,JTA.sport_id,S.stat_perf,SP.sport_name,EL.ecole_name  FROM eleves AS E INNER JOIN joint_table_all AS JTA ON E.eleve_id = JTA.eleve_id INNER JOIN stat AS S ON S.stat_id = E.stat_id INNER JOIN  sports AS SP ON SP.sport_id = S.sport_id INNER JOIN ecoles AS EL ON EL.ecole_id = JTA.ecole_id  WHERE EL.ecole_id = :id
+        $sql = 'SELECT E.eleve_nom,JTA.sport_id,S.stat_perf,SP.sport_name,EL.ecole_name  FROM eleves AS E INNER JOIN joint_table_all AS JTA ON E.eleve_id = JTA.eleve_id INNER JOIN stat AS S ON S.stat_id = E.stat_id INNER JOIN  
+        sports AS SP ON SP.sport_id = S.sport_id INNER JOIN ecoles AS EL ON EL.ecole_id = JTA.ecole_id  WHERE EL.ecole_id = :id
         ';
         $stmnt = Db::setting_db()->prepare($sql);
         $stmnt->bindParam(':id', $id);
@@ -106,7 +110,8 @@ class EleveManager extends SqlErrors
 
     public function getSportCount($id)
     {
-        $sql = 'SELECT COUNT(*),sport_name FROM eleves AS E INNER JOIN joint_table_all AS JTA ON E.eleve_id = JTA.eleve_id INNER JOIN stat AS S ON S.stat_id = E.stat_id INNER JOIN  sports AS SP ON SP.sport_id = S.sport_id INNER JOIN ecoles AS EL ON EL.ecole_id = JTA.ecole_id  WHERE EL.ecole_id = :id GROUP BY sport_name ORDER BY COUNT(*) ASC';
+        $sql = 'SELECT COUNT(*),sport_name FROM eleves AS E INNER JOIN joint_table_all AS JTA ON E.eleve_id = JTA.eleve_id INNER JOIN stat AS S ON S.stat_id = E.stat_id INNER JOIN  sports AS SP ON SP.sport_id = S.sport_id INNER JOIN ecoles AS EL ON
+        EL.ecole_id = JTA.ecole_id  WHERE EL.ecole_id = :id GROUP BY sport_name ORDER BY COUNT(*) ASC';
         $stmnt = Db::setting_db()->prepare($sql);
         $stmnt->bindParam(':id', $id);
         $stmnt->execute();
@@ -122,7 +127,8 @@ class EleveManager extends SqlErrors
     }
     public function getSportCountEleve($id)
     {
-        $sql = 'SELECT COUNT(*) FROM eleves AS E INNER JOIN joint_table_all AS JTA ON E.eleve_id = JTA.eleve_id INNER JOIN stat AS S ON S.stat_id = E.stat_id INNER JOIN  sports AS SP ON SP.sport_id = S.sport_id INNER JOIN ecoles AS EL ON EL.ecole_id = JTA.ecole_id  WHERE EL.ecole_id = :id';
+        $sql = 'SELECT COUNT(*) FROM eleves AS E INNER JOIN joint_table_all AS JTA ON E.eleve_id = JTA.eleve_id INNER JOIN stat AS S ON S.stat_id = E.stat_id INNER JOIN  sports AS SP ON SP.sport_id = S.sport_id INNER JOIN ecoles AS EL ON 
+        EL.ecole_id = JTA.ecole_id  WHERE EL.ecole_id = :id';
         $stmnt = Db::setting_db()->prepare($sql);
         $stmnt->bindParam(':id', $id);
         $stmnt->execute();
