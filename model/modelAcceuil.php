@@ -1,5 +1,6 @@
 <?php require('controller/caller.php') ?>
- <!-- model visible que si elle passe le test du caller  ici est montre le nombre de personne dans l'ecole , une liste montrant le nombre de personne partiquant au moins 1 sport une liste detailler des eleve avec leurs stat (qui on une perf avec le sport relier a cette perf j'ai fait un systme de point mais cette collone peux etre aisaiment changer en text pour par exemple : il a fait telle exploit blabla) en desous il y a le nombre de partiquant par sport comme demander sur l'exercice-->
+ <!-- model visible que si elle passe le test du caller  ici est montre le nombre de personne dans l'ecole , une liste montrant le nombre de personne partiquant au moins 1 sport une liste detailler des eleve avec leurs stat 
+(qui on une perf avec le sport relier a cette perf j'ai fait un systme de point mais cette collone peux etre aisaiment changer en text pour par exemple : il a fait telle exploit blabla) -->
 
 <?php for ($i = 1; $i <= 3; $i++) : ?>
     <h1>ecole <?php echo  $i ?></h1>
