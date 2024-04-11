@@ -1,5 +1,6 @@
 <?php
-//  la descr est la breve qui permet de remplir la table de jointure joint_table_all et etant de la class extend parce que elle aura par la suite les propriète de la class error et en plus la method setId dont je n'aurai pas a re ecrire le code.
+// la descr est la breve qui permet de remplir la table de jointure joint_table_all et etant donne que la class est extend des stat elle aura par la suite les propriète de la class
+// error et en plus la method setId dont je n'aurai pas a re ecrire le code.
 
 class JointDescr extends stat
 {
